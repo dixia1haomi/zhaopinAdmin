@@ -1,0 +1,43 @@
+page{
+  padding-bottom: 80rpx;
+}
+
+.block {
+  font-size: 13px;
+  /* color: #aaa; */
+  padding: 10px 5px;
+  border-bottom: 1px solid #aaa;
+  display: flex;
+  flex-flow: column;
+}
+
+.item {
+  padding: 5px;
+  flex: 1;
+  white-space: nowrap;
+}
+
+.one {
+  display: flex;
+  width: 100%;
+}
+
+.tow{
+  display: flex;
+  justify-content: space-around;
+}
+
+.button{
+  padding: 5px 25px;
+  border: 1px solid #aaa;
+}
+
+.aa{
+  display: inline-block;
+}
+
+.xiayiye{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}

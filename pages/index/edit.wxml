@@ -1,0 +1,13 @@
+<view>
+  <!-- <view>{{jobDetailRes.job_name}}</view> -->
+  岗位名称:
+  <input bindblur='job_name' value='{{jobDetailRes.job_name}}' catchtap=''></input>
+  用户名称:
+  <input bindblur='job_user_name' value='{{jobDetailRes.job_user_name}}' catchtap=''></input>
+  电话:
+  <input bindblur='phone' value='{{jobDetailRes.phone}}' catchtap=''></input>
+  描述:
+  <textarea class='textarea' bindinput='job_description' value='{{jobDetailRes.job_description}}' maxlength='1000'></textarea>
+
+  <button catchtap='confirm'>提交</button>
+</view>

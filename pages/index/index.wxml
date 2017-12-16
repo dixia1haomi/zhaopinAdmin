@@ -1,0 +1,81 @@
+<view>
+
+  <button catchtap='sousuo'>展开/收起-共{{whereLength}}条</button>
+
+  <view wx:if="{{kaiguan}}">
+
+    <!-- ID -->
+    <my-input bind:inputEvent="idEvent" text="ID" zhanwei="输入ID" value="{{jobRes.id}}"></my-input>
+
+    <!-- 岗位名称 -->
+    <my-input bind:inputEvent="job_nameEvent" text="岗位名称" zhanwei="岗位名称" value="{{jobRes.job_name}}"></my-input>
+
+    <!-- 区域 -->
+    <!-- <my-input bind:inputEvent="work_areaEvent" text="区域" zhanwei="区域" value="{{jobRes.work_area}}"></my-input> -->
+    <my-cell catchtap="sheetState_work_area" title="区域" text="{{work_area_list[sousuo.work_area] || ''}}" jiantou hover>
+      <my-sheetdown state="{{sheetState_work_area}}" bind:itemEvent="work_areaEvent" list="{{work_area_list}}" cancel title></my-sheetdown>
+    </my-cell>
+
+    <!-- 用户ID -->
+    <my-input bind:inputEvent="user_idEvent" text="用户ID" zhanwei="用户ID" value="{{jobRes.user_id}}"></my-input>
+
+    <!-- 用户名称 -->
+    <my-input bind:inputEvent="job_user_nameEvent" text="用户名称" zhanwei="用户名称" value="{{jobRes.job_user_name}}"></my-input>
+
+    <!-- 电话号码 -->
+    <my-input bind:inputEvent="phoneEvent" text="电话号码" zhanwei="电话号码" value="{{jobRes.phone}}"></my-input>
+
+    <button catchtap='where'>搜索</button>
+
+  </view>
+
+
+
+
+  <block wx:for="{{jobRes}}" wx:key="">
+    <view class='block'>
+      <view class='one'>
+        <view class='item'>{{item.job_name}}</view>
+        <view class='item'>浏览{{item.page_view}}次</view>
+        <view class='item'>类型:{{item.job_type == 1 ? '公司':'个人'}}</view>
+        <view class='item'>ID:{{item.id}}</view>
+      </view>
+
+      <view class='one'>
+        <view class='item'>招聘{{item.ments_number}}人</view>
+        <view class='item'>{{ments_education_list[item.ments_education]}}</view>
+        <view class='item'>{{ments_exp_list[item.ments_exp]}}</view>
+        <view class='item'>用户ID:{{item.user_id}}</view>
+      </view>
+
+      <view class='one'>
+        <view class='item'>{{work_area_list[item.work_area]}}</view>
+        <view class='item'>{{pay_level_list[item.pay_level]}}</view>
+        <view class='item'>{{item.phone}}</view>
+        <view class='item'>{{item.job_user_name}}</view>
+      </view>
+
+      <view class='one'>
+        <view class='item'>顶置:{{item.set_top != 0 ?'是':'否'}}</view>
+        <view class='item'>公司ID:{{item.company_id}}</view>
+        <view class='item'>{{item.update_time}}</view>
+      </view>
+
+      <view class='item'>{{item.map_address}}</view>
+      <view class='item'>{{item.map_name}}</view>
+      <view class='item'>{{item.welfare}}</view>
+
+      <view class='item'>
+        <view class='item' id='{{item.id}}' catchtap='miaoshu'>描述</view>
+        <text class='item' wx:if="{{item.xianshi}}">{{item.job_description}}</text>
+      </view>
+
+      <view class='tow'>
+        <view class='button' id='{{item.id}}' catchtap='edit'>编辑</view>
+        <view class='button' id='{{item.id}}' data-uid='{{item.user_id}}' catchtap='del'>删除</view>
+      </view>
+    </view>
+  </block>
+
+  <button class='xiayiye' catchtap='xiayiye'>下一页:共{{resLength}}条</button>
+</view>
